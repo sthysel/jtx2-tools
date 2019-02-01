@@ -23,6 +23,8 @@ setup(
     install_requires=[
         'click',
         'knobs',
+        'matplotlib',
+        'numpy',
     ],
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
