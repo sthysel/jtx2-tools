@@ -7,7 +7,7 @@ import matplotlib.pyplot as plot
 from matplotlib.animation import FuncAnimation
 from collections import deque
 
-matplotlib.use('TkAgg')
+# matplotlib.use('TkAgg')
 
 @click.command(context_settings=dict(max_content_width=120))
 @click.version_option()
@@ -30,6 +30,8 @@ def cli(interval, gpu_load_file):
     Plot JTX2 GPU usage
     """
 
+    #global gpu_ax, gpu_line, gpuy_list, gpu_xlist, fill_lines
+
     # Subplot for the GPU activity
     gpu_ax = plot.subplot2grid((1, 1), (0, 0), rowspan=2, colspan=1)
     # For the comparison
@@ -38,7 +40,7 @@ def cli(interval, gpu_load_file):
     gpuy_list = deque([0] * 240)
     gpux_list = deque(np.linspace(60, 0, num=240))
 
-    fill_lines = 0
+    fill_lines = []
 
     def initGraph():
         gpu_ax.set_xlim(60, 0)
@@ -64,7 +66,7 @@ def cli(interval, gpu_load_file):
                 # The GPU load is stored as a percentage * 10, e.g 256 = 25.6%
                 gpuy_list.append(int(fileData) / 10)
                 gpu_line.set_data(gpux_list, gpuy_list)
-                fill_lines.remove()
+                #fill_lines.remove()
                 fill_lines = gpu_ax.fill_between(
                     gpux_list,
                     0,
