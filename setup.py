@@ -17,7 +17,7 @@ setup(
     version='0.0.1',
     entry_points={
         'console_scripts': [
-            'txt2-show-gpu=jtx2tools.cli:cli',
+            'jtxt2-show-gpu=jtx2tools.cli:cli',
         ],
     },
     install_requires=[
