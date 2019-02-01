@@ -5,6 +5,9 @@ Specifically the AAEON form-factor.
 
 ## jtx2-show-gpu
 
+![GPU Tracker](docs/pics/activity.png)
+
+
 ```zsh
 
 Usage: jtxt2-show-gpu [OPTIONS]
