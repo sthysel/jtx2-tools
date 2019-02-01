@@ -8,6 +8,10 @@ Specifically the AAEON form-factor.
 ![GPU Tracker](docs/pics/activity.png)
 
 
+This tool displays the current GPU usage verifying that the GPU core and supporting libraries are actually in
+use.
+
+
 ```zsh
 
 Usage: jtxt2-show-gpu [OPTIONS]
