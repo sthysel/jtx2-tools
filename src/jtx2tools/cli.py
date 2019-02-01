@@ -29,9 +29,9 @@ def cli(interval, gpu_load_file):
     """
 
     # Subplot for the GPU activity
-    gpuAx = plot.subplot2grid((1, 1), (0, 0), rowspan=2, colspan=1)
+    gpu_ax = plot.subplot2grid((1, 1), (0, 0), rowspan=2, colspan=1)
     # For the comparison
-    gpuLine, = gpuAx.plot([], [])
+    gpu_line, = gpu_ax.plot([], [])
     # The line points in x,y list form
     gpuy_list = deque([0] * 240)
     gpux_list = deque(np.linspace(60, 0, num=240))
@@ -39,17 +39,17 @@ def cli(interval, gpu_load_file):
     fill_lines = 0
 
     def initGraph():
-        gpuAx.set_xlim(60, 0)
-        gpuAx.set_ylim(-5, 105)
-        gpuAx.set_title('GPU History')
-        gpuAx.set_ylabel('GPU Usage (%)')
-        gpuAx.set_xlabel('Seconds')
-        gpuAx.grid(color='gray', linestyle='dotted', linewidth=1)
+        gpu_ax.set_xlim(60, 0)
+        gpu_ax.set_ylim(-5, 105)
+        gpu_ax.set_title('GPU History')
+        gpu_ax.set_ylabel('GPU Usage (%)')
+        gpu_ax.set_xlabel('Seconds')
+        gpu_ax.grid(color='gray', linestyle='dotted', linewidth=1)
 
-        gpuLine.set_data([], [])
-        fill_lines = gpuAx.fill_between(gpuLine.get_xdata(), 50, 0)
+        gpu_line.set_data([], [])
+        fill_lines = gpu_ax.fill_between(gpu_line.get_xdata(), 50, 0)
 
-        return [gpuLine] + [fill_lines]
+        return [gpu_line] + [fill_lines]
 
     def updateGraph(frame):
         """Now draw the GPU usage"""
@@ -61,11 +61,17 @@ def cli(interval, gpu_load_file):
 
                 # The GPU load is stored as a percentage * 10, e.g 256 = 25.6%
                 gpuy_list.append(int(fileData) / 10)
-                gpuLine.set_data(gpux_list, gpuy_list)
+                gpu_line.set_data(gpux_list, gpuy_list)
                 fill_lines.remove()
-                fill_lines = gpuAx.fill_between(gpux_list, 0, gpuy_list, facecolor='cyan', alpha=0.50)
+                fill_lines = gpu_ax.fill_between(
+                    gpux_list,
+                    0,
+                    gpuy_list,
+                    facecolor='cyan',
+                    alpha=0.50,
+                )
 
-                return [gpuLine] + [fill_lines]
+                return [gpu_line] + [fill_lines]
         except FileNotFoundError:
             click.echo(f'Error reading {gpu_load_file}')
             return []
