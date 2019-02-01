@@ -2,4 +2,7 @@
 
 Specifically the AAEON form-factor.
 
+# Resources
+
+ - https://github.com/jetsonhacks/gpuGraphTX
 

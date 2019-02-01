@@ -2,10 +2,12 @@ import sys
 import os
 import click
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plot
 from matplotlib.animation import FuncAnimation
 from collections import deque
 
+matplotlib.use('TkAgg')
 
 @click.command(context_settings=dict(max_content_width=120))
 @click.version_option()
