@@ -11,6 +11,7 @@ Specifically the AAEON form-factor.
 This tool displays the current GPU usage verifying that the GPU core and supporting libraries are actually in
 use.
 
+`$ jtx2-show-gpu --help`
 
 ```zsh
 
@@ -27,7 +28,10 @@ Options:
 
 # Install
 
-Clone repo and do `$ pip install . ` in virtualenv.
+Tools are packaged as typical setuptools packaged applications.
+
+Clone repo and do `$ pip install . ` in virtualenv. Tool is available as
+`jtx2-show-gpu` in path.
 
 
 
