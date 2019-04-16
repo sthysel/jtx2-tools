@@ -25,6 +25,11 @@ Options:
   --help                    Show this message and exit.
 ```
 
+# Install
+
+Clone repo and do `$ pip install . ` in virtualenv.
+
+
 
 # Resources
 
